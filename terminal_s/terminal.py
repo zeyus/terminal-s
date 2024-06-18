@@ -172,7 +172,12 @@ PARITY_CHOICES = ['N', 'E', 'O', 'S', 'M']
 @click.option('-s', '--stopbits', default=1, type=click.IntRange(0, 2), help='set stop bits')
 @click.option('-l', '--loopback', default=False, is_flag=True, help='loopback mode')
 @click.option('-s', '--script', default=False, is_flag=True, help='script mode (non-interactive connnection config)')
-def main(port: str | None, baudrate: int, parity: str, stopbits: int, loopback: bool, script: bool):
+@click.option('-e', '--enumerate', default=False, is_flag=True, help='list available ports')
+def main(port: str | None, baudrate: int, parity: str, stopbits: int, loopback: bool, script: bool, enumerate: bool):
+    if enumerate:
+        ports: list[ListPortInfo] = list_ports.comports()
+        print_ports(ports)
+        return
     if port is None:
         if script:
             return
