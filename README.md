@@ -45,3 +45,26 @@ Options:
 pip install pyinstaller
 pyinstaller terminal-s.spec
 ```
+
+## C version
+
+The C version is generated using cython, you can replicate it with:
+
+```
+pip install cython
+cython --embed ./terminal_s/terminal.py
+```
+
+### CL
+
+```
+cl /O2 ./terminal_s/terminal.c terminal-s.res /I C:\path\to\python\include /link /out:dist/terminal-s.exe "C:\path\to\python\libs\python311.lib
+```
+
+### GCC
+
+You can also compile the C version with GCC:
+
+```
+gcc -municode -Os -L"/path/to/python/libs" -I"/path/to/python/include" ./terminal_s/terminal.c terminal-s.res -o dist/terminal-s.exe -l"python311"
+```
