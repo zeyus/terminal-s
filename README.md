@@ -66,5 +66,15 @@ cl /O2 ./terminal_s/terminal.c terminal-s.res /I C:\path\to\python\include /link
 You can also compile the C version with GCC:
 
 ```
-gcc -municode -Os -L"/path/to/python/libs" -I"/path/to/python/include" ./terminal_s/terminal.c terminal-s.res -o dist/terminal-s.exe -l"python311"
+gcc -Os -L"/path/to/python/libs" -I"/path/to/python/include" ./terminal_s/terminal.c terminal-s.res -o dist/terminal-s.exe -l"python311"
+```
+
+**Note**: for MINGW, you may need to add `-municode` flag to avoid `undefined reference to '__imp__Py_Initialize'` error. You will also need to edit pyconfig.h and add the following lines under `/* Compiler specific defines */`:
+
+```c
+#ifdef __MINGW32__
+#ifdef _WIN64
+#define MS_WIN64
+#endif
+#endif
 ```
