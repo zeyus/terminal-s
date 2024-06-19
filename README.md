@@ -3,7 +3,7 @@ Terminal S
 
 A super simple serial terminal with [about 200 lines of Python code](terminal_s/terminal.py)
 
-![](https://user-images.githubusercontent.com/948283/82290238-050e5600-99d9-11ea-9b36-50fb12471e95.png)
+![terminal-s](https://github.com/zeyus/terminal-s/assets/75656/9fd630c4-e10a-48a6-9e35-fd0c0b804ddd)
 
 
 ## Features
